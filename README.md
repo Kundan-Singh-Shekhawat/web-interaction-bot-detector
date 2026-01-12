@@ -51,4 +51,12 @@ Due to the scarcity of publicly available labeled interaction logs, this project
 
 This approach is common in bot-detection research and allows explicit encoding of behavioral assumptions.
 
-Dataset structure:
+## Baseline Model Results
+
+A Logistic Regression model was trained as a baseline classifier using the synthetic session-level behavioral features.
+
+**Observation:**
+The baseline model achieves perfect classification on the current synthetic dataset. This outcome is expected, as the simulated human and bot behaviors are intentionally well-separated to validate the feature design.
+
+**Note:**
+This result does not imply real-world performance. In subsequent iterations, overlapping and edge-case behaviors will be introduced to better reflect realistic bot and human interactions.
