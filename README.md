@@ -60,3 +60,32 @@ The baseline model achieves perfect classification on the current synthetic data
 
 **Note:**
 This result does not imply real-world performance. In subsequent iterations, overlapping and edge-case behaviors will be introduced to better reflect realistic bot and human interactions.
+
+## Results & Observations
+
+A Logistic Regression model was used as a baseline classifier on session-level behavioral features.
+
+Initial experiments on clean synthetic data showed near-perfect separation between human and bot sessions, validating the feature design. To better reflect real-world conditions, overlapping behaviors such as fast humans and stealthy bots were introduced.
+
+Under these more realistic conditions, the model exhibits meaningful trade-offs:
+- Some bots evade detection (false negatives)
+- A small number of humans may be flagged incorrectly (false positives)
+
+These outcomes reflect the inherent ambiguity in behavior-based bot detection.
+
+## Decision Threshold and System Design
+
+Rather than relying on hard class labels, the system uses probability-based predictions. A configurable decision threshold is applied to control the trade-off between false positives and false negatives.
+
+- Lower thresholds favor aggressive bot detection (higher recall)
+- Higher thresholds reduce false positives at the cost of allowing some bots through
+
+This separation between model confidence and decision policy mirrors real-world bot detection systems, where actions such as blocking, CAPTCHA challenges, or logging are chosen based on risk tolerance.
+
+## Limitations
+
+- The dataset is synthetically generated and based on assumed behavior patterns.
+- Real-world bot behavior may evolve to better mimic human interactions.
+- The current model operates at session level and does not capture fine-grained event sequences.
+
+These limitations are acknowledged and provide opportunities for future extension.
